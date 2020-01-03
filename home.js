@@ -8,7 +8,9 @@ let setDetails={
         { name: "Monte Amiata", height: 1738, place: "Siena" }
     ],
     customHeader : [
-        
+        {field:'name', value:'Moutain Name'},
+        {field:'height', value:'Height of Mountain'},
+        {field:'place', value:'Location'}
      ],
     setBodyColor : { backround:'blue', color:'black'}
   };
