@@ -4,7 +4,7 @@ class Tablegrid extends HTMLElement {
 let keys ;   
 let data = setDetails.data;
 let customHeader = setDetails.customHeader;
-if(customHeader){
+if(customHeader.length){
     keys = setDetails.customHeader.map((x)=>(x.value));
 }
 else{
