@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-    th, td, p, input {
-            font:14px Verdana;
-        }
-        table, th, td 
-        {
-            border: solid 1px #000;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        th {
-            font-weight: bold;
-            background: #9E9E9E;
-            text-transform: capitalize;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <table-grid></table-grid>
-  <script src="home.js"></script>  
+    <table-grid 
+    background="red" 
+    color='White'
+    ></table-grid>
+  <script src="home.js"></script>
   <script src="script.js"></script>
+  <script>
+   (function(){
+    let data = [
+        { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+        { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+        { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+        { name: "Monte Amiata", height: 1738, place: "Siena" }
+    ]
+    let tableGrid = document.querySelector("table-grid");
+        tableGrid.setAttribute('data', JSON.stringify(data));
+      })();   
+  
+  </script>
 </body>
 </html>
