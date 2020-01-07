@@ -2,30 +2,19 @@ class Tablegrid extends HTMLElement {
 	constructor () {
     super();  
     this._data=null;
+    this._customdata = null;
+}
 
-}
-get data(){
-    return this._data;
-}
-set data(val){
-    this.setAttribute('data', val);
-}
 static get observedAttributes(){
-    return ['data'];
+    return ['data','abc']
 }
 attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
         case 'data':
-         let keys = null ;   
-         this._data = JSON.parse(this.getAttribute('data'))
-         let customHeader = setDetails.customHeader;
-         if(customHeader.length){
-            keys = setDetails.customHeader.map((x)=>(x.value));
-         }
-         else{
-            keys = Object.keys(this._data[0]);
-         }
-
+        let keys = null ;   
+        this._data = JSON.parse(this.getAttribute('data'))
+        
+        keys = Object.keys(this._data[0]);
         let values = [];
         let finalArray = [];
         finalArray.push(keys);
@@ -37,6 +26,8 @@ attributeChangedCallback(name, oldValue, newValue) {
         let table = document.createElement("TABLE");
         table.border = "1";
         table.style.borderCollapse="collapse"; 
+        //let customdata = this.getAttribute('customData');
+        //let customKey = customdata.map(({ value }) => value);
         let setBodyColor = this.getAttribute('background');
         let fontColor = this.getAttribute('color'); 
         let fontSize = this.getAttribute('fontSize'); 
@@ -73,9 +64,6 @@ attributeChangedCallback(name, oldValue, newValue) {
            
     }
     
-    
-  }
-
 }
-  
+}
 customElements.define('table-grid',Tablegrid );
