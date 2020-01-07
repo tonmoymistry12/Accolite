@@ -14,8 +14,8 @@ attributeChangedCallback(name, oldValue, newValue) {
         let keys = null ;   
         let orgData = JSON.parse(this.getAttribute('data'))
         this._data=orgData[0];
-        let height=orgData[0].map((x)=>(x.height));
         let otherProps=orgData[1];
+        let height=orgData[0].map((x)=>(x[otherProps[0].cellName]));
         let color= otherProps[0].cellColor.split(":");
         keys = Object.keys(this._data[0]);
         let values = [];
@@ -67,10 +67,10 @@ attributeChangedCallback(name, oldValue, newValue) {
         let x = table.getElementsByTagName("td");
         console.log(x)
         for(let i=0; i<x.length; i++){
-            if( x[i].innerText >= otherProps[0].cellValue){
+            if( x[i].innerText >= otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
                 x[i].style.backgroundColor = color[0]
             }
-            if(x[i].innerText <= otherProps[0].cellValue){
+            if(x[i].innerText <= otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
                 x[i].style.backgroundColor = color[1];
             }
             
