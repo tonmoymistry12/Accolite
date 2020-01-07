@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <table-grid background="yellow" color='black'></table-grid>
+    <table-grid 
+    background="yellow" 
+    color='black'
+    ></table-grid>
+
   <script src="script.js"></script>
   
   <script>
@@ -17,20 +21,29 @@
     let data = [
         { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi", distance: "130km" },
         { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi",  distance: "180km" },
-        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi",   distance: " " },
+        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi",   distance: "120km" },
         { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi",  distance: "150km" },
         { name: "Monte Amiata", height: 1738, place: "Siena",  distance: "200km" }
     ];
     // User can customize the table header title and will show those data that are mentioned in the below JSON
     let tableData = [
-        {name:'Moutain Name', place:'Mountain Location', height:'Moutain Height' }
+       {
+           name:'Moutain Name', 
+           place:'Mountain Location', 
+           height:'Moutain Height', 
+           cellValue:1600, 
+           cellColor:'blue:green'
+       }
     ];
-
+    let c = [];
+    c.push(data);
+    c.push(tableData);
     const transformed = data.map(({ name, height, place}) => ({[tableData[0].name]:name,[tableData[0].height]:height,[tableData[0].place]:place}));
     
+    
     let tableGrid = document.querySelector("table-grid");
-        tableGrid.setAttribute('data', JSON.stringify(transformed));
-        tableGrid.setAttribute('customData', JSON.stringify(tableData));
+        tableGrid.setAttribute('data', JSON.stringify(c));
+        //tableGrid.setAttribute('customData', JSON.stringify(tableData));
       })();   
   
   </script>

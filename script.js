@@ -12,8 +12,11 @@ attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
         case 'data':
         let keys = null ;   
-        this._data = JSON.parse(this.getAttribute('data'))
-        
+        let orgData = JSON.parse(this.getAttribute('data'))
+        this._data=orgData[0];
+        let height=orgData[0].map((x)=>(x.height));
+        let otherProps=orgData[1];
+        let color= otherProps[0].cellColor.split(":");
         keys = Object.keys(this._data[0]);
         let values = [];
         let finalArray = [];
@@ -30,7 +33,7 @@ attributeChangedCallback(name, oldValue, newValue) {
         //let customKey = customdata.map(({ value }) => value);
         let setBodyColor = this.getAttribute('background');
         let fontColor = this.getAttribute('color'); 
-        let fontSize = this.getAttribute('fontSize'); 
+        
         if(setBodyColor){
             table.style.background=setBodyColor;
         } 
@@ -61,6 +64,20 @@ attributeChangedCallback(name, oldValue, newValue) {
         
         let dvTable = document.querySelector("table-grid");
         dvTable.appendChild(table);   
+        let x = table.getElementsByTagName("td");
+        console.log(x)
+        for(let i=0; i<x.length; i++){
+            if( x[i].innerText >= otherProps[0].cellValue){
+                x[i].style.backgroundColor = color[0]
+            }
+            if(x[i].innerText <= otherProps[0].cellValue){
+                x[i].style.backgroundColor = color[1];
+            }
+            
+        }
+        
+        
+        
            
     }
     
