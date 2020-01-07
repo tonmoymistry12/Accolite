@@ -67,10 +67,10 @@ attributeChangedCallback(name, oldValue, newValue) {
         let x = table.getElementsByTagName("td");
         console.log(x)
         for(let i=0; i<x.length; i++){
-            if( x[i].innerText >= otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
+            if( x[i].innerText > otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
                 x[i].style.backgroundColor = color[0]
             }
-            if(x[i].innerText <= otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
+            if(x[i].innerText < otherProps[0].cellValue && height.includes(parseInt(x[i].innerText))){
                 x[i].style.backgroundColor = color[1];
             }
             
